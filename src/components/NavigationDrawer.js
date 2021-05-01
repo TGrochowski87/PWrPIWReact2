@@ -54,7 +54,7 @@ const NavigationDrawer = ({
   const classes = useStyles();
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Drawer
         className={classes.drawer}
         variant="permanent"

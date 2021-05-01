@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const TagDropdown = ({ usedTags, addTag }) => {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
-      href=""
+      href="/#"
       ref={ref}
       onClick={(e) => {
         e.preventDefault();

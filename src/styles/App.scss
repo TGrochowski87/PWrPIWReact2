@@ -12,11 +12,28 @@
   }
 }
 
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h4 {
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 700px) {
+    h4 {
+      display: none;
+    }
+  }
+}
+
 .search-space {
   position: fixed;
   background-color: rgb(181, 195, 200);
   width: 80%;
   height: 20%;
+  left: 20%;
 
   display: flex;
   flex-direction: row;
@@ -38,19 +55,47 @@
   }
 }
 
-.new-entry {
-  position: fixed;
-  padding: 5% 1% 0 1%;
-  left: 80%;
-  width: 20%;
-  height: 100%;
-  background-color: rgb(176, 207, 219);
+.entry {
+  background-color: #b5c3c8;
+  position: relative;
+  left: 10%;
 
-  p {
-    font-size: 0.7rem;
-    margin: 0;
+  padding: 2% 4%;
+
+  border-radius: 25px;
+
+  .btn {
+    width: 40%;
+  }
+
+  .choice {
+    width: 60%;
+  }
+
+  .form-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .bottom-left {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
+
+// .new-entry {
+//   position: absolute;
+//   padding: 5% 1% 0 1%;
+
+//   height: 100%;
+//   background-color: rgb(176, 207, 219);
+
+//   p {
+//     font-size: 0.7rem;
+//     margin: 0;
+//   }
+// }
 
 .show {
   .btn {
@@ -62,6 +107,7 @@
 .record-list {
   position: absolute;
   top: 20%;
+  left: 20%;
   width: 78%;
   height: 80%;
   margin-left: 1%;
@@ -82,6 +128,16 @@
   padding: 0 1rem 0 0;
 
   margin-top: 10px;
+
+  .edit {
+    position: absolute;
+    right: 2%;
+    bottom: 5%;
+
+    color: rgb(79, 126, 200);
+
+    cursor: pointer;
+  }
 
   .icon {
     position: relative;
@@ -109,18 +165,35 @@
   }
 
   .record-data {
-    text-align: justify;
+    box-sizing: border-box;
     position: relative;
+    text-align: justify;
     width: 60%;
     margin: 0.5% 0;
     display: flex;
     flex-direction: column;
     align-content: space-between;
     justify-content: space-between;
-    overflow: auto;
+    overflow-y: auto;
+
+    input {
+      width: 100%;
+    }
+
+    textarea {
+      width: 100%;
+    }
+
+    .record-header {
+      position: relative;
+      width: 100%;
+
+      display: flex;
+      flex-direction: row;
+    }
 
     h3 {
-      @media screen and (max-width: 400px) {
+      @media screen and (max-width: 700px) {
         margin-top: 2%;
         font-size: 1rem;
       }
@@ -129,7 +202,7 @@
     h6 {
       color: rgb(184, 184, 184);
 
-      @media screen and (max-width: 400px) {
+      @media screen and (max-width: 700px) {
         font-size: 0.7rem;
       }
     }

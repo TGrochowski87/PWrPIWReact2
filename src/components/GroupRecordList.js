@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Record from "./Record";
+import GroupRecord from "./GroupRecord";
 
-const RecordList = ({
-  recordList,
+const GroupRecordList = ({
+  groupRecordList,
   tagSearchInput,
   titleSearchInput,
-  setShownPeople,
+  setShownGroups,
   usedTags,
   setUsedTags,
-  editRecord,
+  editGroupRecord,
 }) => {
-  const [filteredList, setFilteredList] = useState([...recordList]);
+  const [filteredList, setFilteredList] = useState([...groupRecordList]);
 
   useEffect(() => {
     setFilteredList(
-      recordList.filter((record) => {
+      groupRecordList.filter((record) => {
         if (titleSearchInput === "" && tagSearchInput === "") {
           return record;
         }
@@ -36,26 +36,26 @@ const RecordList = ({
         return null;
       })
     );
-  }, [tagSearchInput, titleSearchInput, recordList]);
+  }, [tagSearchInput, titleSearchInput, groupRecordList]);
 
   useEffect(() => {
-    setShownPeople(filteredList.length);
+    setShownGroups(filteredList.length);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredList]);
 
   return (
     <>
       {filteredList.map((record) => (
-        <Record
+        <GroupRecord
           key={record.id}
           data={record}
           usedTags={usedTags}
           setUsedTags={setUsedTags}
-          editRecord={editRecord}
+          editGroupRecord={editGroupRecord}
         />
       ))}
     </>
   );
 };
 
-export default RecordList;
+export default GroupRecordList;

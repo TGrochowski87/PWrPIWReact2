@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserGraduate, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faUsers, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { Edit as EditIcon } from "@material-ui/icons";
 import { v4 as uuidv4 } from "uuid";
 import { Badge } from "react-bootstrap";
 
 import TagDropdown from "./TagDropdown";
 
-const Record = ({ data, usedTags, setUsedTags, editRecord }) => {
+const GroupRecord = ({ data, usedTags, setUsedTags, editGroupRecord }) => {
   const [editMode, setEditMode] = useState(false);
 
   const [titleInput, setTitleInput] = useState(data.title);
   const [nameInput, setNameInput] = useState(data.name);
   const [descriptionInput, setDescriptionInput] = useState(data.description);
+  const [peopleNeededInput, setPeopleNeededInput] = useState(data.peopleNeeded);
   const [tags, setTags] = useState(data.tags);
 
   const addTag = (value) => {
@@ -39,6 +40,8 @@ const Record = ({ data, usedTags, setUsedTags, editRecord }) => {
       description:
         descriptionInput === "" ? data.description : descriptionInput,
       tags: tags.length === 0 ? data.tags : tags,
+      peopleNeeded:
+        peopleNeededInput === 0 ? data.peopleNeeded : peopleNeededInput,
     };
 
     const toAdd = [];
@@ -51,13 +54,13 @@ const Record = ({ data, usedTags, setUsedTags, editRecord }) => {
     setUsedTags([...toAdd, ...usedTags]);
 
     setEditMode(false);
-    editRecord(editedData);
+    editGroupRecord(editedData);
   };
 
   return (
     <div className="record">
       <div className="icon-back">
-        <FontAwesomeIcon icon={faUserGraduate} className="icon" />
+        <FontAwesomeIcon icon={faUsers} className="icon" />
       </div>
       <div className="record-data">
         <div className="record-header">
@@ -90,6 +93,21 @@ const Record = ({ data, usedTags, setUsedTags, editRecord }) => {
               />
             ) : (
               `${data.name}`
+            )}
+          </h3>
+          <h3 style={{ marginLeft: "10px" }}>
+            {editMode ? (
+              <input
+                type="number"
+                maxLength="2"
+                placeholder="People needed"
+                value={peopleNeededInput}
+                onChange={(event) => {
+                  setPeopleNeededInput(event.target.value);
+                }}
+              />
+            ) : (
+              ` | People needed: ${data.peopleNeeded}`
             )}
           </h3>
         </div>
@@ -149,4 +167,4 @@ const Record = ({ data, usedTags, setUsedTags, editRecord }) => {
   );
 };
 
-export default Record;
+export default GroupRecord;

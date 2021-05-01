@@ -29,7 +29,7 @@ const SearchSpace = ({
             </Col>
           </Form.Group>
 
-          <Form.Group as={Row} controlId="formPlaintextPassword">
+          <Form.Group as={Row} controlId="formPlaintextPassword2">
             <Form.Label column sm="4">
               Search by title:
             </Form.Label>

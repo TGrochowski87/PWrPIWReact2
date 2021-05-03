@@ -54,7 +54,7 @@ const NavigationDrawer = ({
   const classes = useStyles();
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -68,7 +68,7 @@ const NavigationDrawer = ({
         </div>
         <Divider />
         <List>
-          <Link to="/forum" className={classes.link}>
+          <Link to="/PWrPIWReact2/forum" className={classes.link}>
             <ListItem button>
               <ListItemIcon>
                 <ListIcon />
@@ -76,7 +76,7 @@ const NavigationDrawer = ({
               <ListItemText primary="Forum" />
             </ListItem>
           </Link>
-          <Link to="/new" className={classes.link}>
+          <Link to="/PWrPIWReact2/new" className={classes.link}>
             <ListItem button>
               <ListItemIcon>
                 <CreateIcon />
@@ -88,9 +88,13 @@ const NavigationDrawer = ({
       </Drawer>
 
       <Switch>
-        <Route exact path="/" render={(props) => <Redirect to="/forum" />} />
         <Route
-          path="/forum"
+          exact
+          path="/PWrPIWReact2/"
+          render={(props) => <Redirect to="/forum" />}
+        />
+        <Route
+          path="/PWrPIWReact2/forum"
           render={(props) => (
             <ForumPage
               {...props}
@@ -105,7 +109,7 @@ const NavigationDrawer = ({
         />
         <Route
           exact
-          path="/new"
+          path="/PWrPIWReact2/new"
           render={(props) => (
             <NewEntry
               {...props}

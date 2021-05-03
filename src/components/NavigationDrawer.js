@@ -68,7 +68,7 @@ const NavigationDrawer = ({
         </div>
         <Divider />
         <List>
-          <Link to="/forum" className={classes.link}>
+          <Link to="/" className={classes.link}>
             <ListItem button>
               <ListItemIcon>
                 <ListIcon />
@@ -88,9 +88,9 @@ const NavigationDrawer = ({
       </Drawer>
 
       <Switch>
-        <Route exact path="/" render={(props) => <Redirect to="/forum" />} />
         <Route
-          path="/forum"
+          exact
+          path="/"
           render={(props) => (
             <ForumPage
               {...props}
@@ -104,7 +104,6 @@ const NavigationDrawer = ({
           )}
         />
         <Route
-          exact
           path="/new"
           render={(props) => (
             <NewEntry
